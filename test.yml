@@ -1,0 +1,10 @@
+---
+- hosts: all
+  user: root
+  vars:
+    - msg: hello world.
+  tasks:
+    - name: collect the server info.
+      shell: "echo {{ ansible_hostname }}, mac for eth0 is {{ ansible_eth0.macaddress }} >> /tmp/hostname.log" 
+    - name: copy file
+      template: src=/root/test.txt dest=/tmp/test.txt
